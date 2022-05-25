@@ -1,4 +1,7 @@
 function  el = tle2kepler(tle, earth)
+if isstring(tle)
+    tle = parseTLE(tle);
+end
 T = 24*60*60/tle.n;
 el.a = (T*sqrt(earth.mu)/(2*pi))^(2/3);
 el.e = tle.e;

@@ -7,3 +7,6 @@ addpath("functions/util");
 addpath("functions/keplerian");
 addpath("functions/analysis");
 addpath("functions/coordinates");
+
+addpath("odes");
+addpath("data");

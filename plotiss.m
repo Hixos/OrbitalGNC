@@ -1,7 +1,7 @@
 % close all
 clearvars
 
-initfuncs
+initfolders
 initdata
 
 iss_tle_str = fileread("tles/iss.tle");

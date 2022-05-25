@@ -3,7 +3,7 @@ clearvars
 close all
 
 initfuncs
-initdata
+initfolders
 
 opt.JD0 = 2459720.053565380;%datetime2julian(datetime(2050,01,01));
 

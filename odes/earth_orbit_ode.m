@@ -1,4 +1,4 @@
-function [dy_dt] = orbit_ode_fun(t, y, opt, bodies)
+function [dy_dt] = earth_orbit_ode(t, y, opt, bodies)
     r = y(1:3);
     R = norm(r);
     ur = r./R;

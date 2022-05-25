@@ -2,7 +2,7 @@ close all
 clearvars
 clc
 
-initfuncs
+initfolders
 initdata
 
 N = 5000; % Number of steps
@@ -22,7 +22,7 @@ opt.JD0 = datetime2julian();
 opt.theta0 = sidereal(opt.JD0);
 opt.J20 = J2000(opt.JD0);
 
-kep0 = tlefile2kepler("data/iss2.tle", bodies.earth);
+kep0 = tle2kepler(iss_tle_web(), bodies.earth);
 kep0 = propagate_elements(kep0, opt.JD0, bodies.earth);
 % if kep0.e < 1
 %     Torbit = 2*pi/sqrt(bodies.earth.mu)*kep0.a^(3/2);
@@ -33,7 +33,7 @@ kep0 = propagate_elements(kep0, opt.JD0, bodies.earth);
 [r0, v0] = kep2car(kep0, bodies.earth);
 y0 = [r0, v0];
 
-orbit_fun = @(t,y) orbit_ode_fun(t, y, opt, bodies);
+orbit_fun = @(t,y) earth_orbit_ode(t, y, opt, bodies);
 tspan = linspace(0, Tend, N);
 
 

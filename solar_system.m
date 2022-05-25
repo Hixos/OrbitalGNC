@@ -2,7 +2,7 @@ close all
 clearvars
 clc
 
-initfuncs
+initfolders
 initdata
 
 N = 500;

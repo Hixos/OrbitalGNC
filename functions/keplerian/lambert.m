@@ -1,14 +1,18 @@
 function [v1, v2] = lambert(r1, r2, dt, body)
+%LAMBERT Solves the lambert problem 
+%   [V1,V2] = LAMBERT(R1,R2,DT,BODY) finds a transfer orbit between R1 and
+%   R2 with transfer time DT, around the celestial body BODY.
+
     rc = cross(r1, r2);
     r1_norm = vecnorm(r1,2,2);
     r2_norm = vecnorm(r2,2,2);
-    r1r2 = r1_norm*r2_norm;
+    r1r2 = r1_norm.*r2_norm;
 
-    Dth = acos(dot(r1,r2)./(r1r2));
+    Dth = acos(dot(r1,r2, 2)./(r1r2));
     Dth(rc(3) < 0) = 2*pi - Dth(rc(3) < 0);
 
 
-    A = sin(Dth)*sqrt(r1r2./(1-cos(Dth)));
+    A = sin(Dth).*sqrt(r1r2./(1-cos(Dth)));
 
     y = @(z) r1_norm + r2_norm + A.*(z.*S(z)-1)./sqrt(C(z));
 
